@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mehboob UR Rehman | Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #050505);
+      color: #e0e0e0;
+    }
+    a { text-decoration: none; }
+
+    /* NAVBAR */
+    .navbar-brand span { color: red; font-weight: bold; }
+    .navbar-nav .nav-link { color: #b0b0b0; transition: 0.3s; font-weight: 500; }
+    .navbar-nav .nav-link:hover { color: red; }
+
+    .btn-custom {
+      background: red;
+      color: #fff;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-custom:hover { background: red; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: 2rem; }
+    .hero-left h1 { font-size: 3.5rem; line-height: 1.1; font-weight: 700; }
+    .hero-left h3 { color: #c0c0c0; margin-bottom: 1rem; font-weight: 600; }
+    .hero-left p { max-width: 500px; color: #aaa; margin-bottom: 2rem; }
+    .hero-right img { border-radius: 25px; box-shadow: 0 0 50px red; width: 300px; max-width: 100%; height: auto; }
+
+    /* SECTION TITLES */
+    .section-title { color: red; font-size: 2.5rem; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    /* CARDS */
+    /* HORIZONTAL SKILLS - FORCE SINGLE ROW */
+.skills-horizontal {
+  display: flex;
+  justify-content: center; /* center row */
+  align-items: center;
+  gap: 50px; /* space between skills */
+  flex-wrap: nowrap; /* prevent wrapping */
+  overflow-x: auto; /* horizontal scroll on small screens */
+  padding: 20px 0;
+}
+
+.skills-horizontal::-webkit-scrollbar {
+  height: 6px;
+}
+
+.skills-horizontal::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 3px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px; /* keep uniform size */
+}
+
+.skill-item h6 {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.skill-item:hover .skill-icon {
+  transform: scale(1.3);
+  text-shadow: 0 0 20px red;
+}
+.skill-icon {
+  font-size: 48px;}
+
+    /* PROGRESS BARS */
+    .progress { height: 20px; background: #1a1a1a; border-radius: 15px; }
+    .progress-bar { background: red; width: 0; transition: width 1s; }
+
+    /* PROJECTS */
+    .project-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+/* SLIDING PROFILE IMAGE */
+.slide-image {
+  animation: slideIn 1.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.badge-soon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff9800;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.coming-soon {
+  opacity: 0.9;
+}
+
+
+    /* SERVICES */
+    .service-card { background: #1a1a1a; border: 2px solid red; border-radius: 15px; padding: 2rem 1rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(155,93,229,0.4); }
+    .service-card h5 { color: red; margin-bottom: 1rem; font-weight: 700; }
+
+    /* FADE-UP ANIMATION */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+
+    /* Purple Text */
+    .text-purple { color:red; }
+    /* NEON HOVER EFFECT ON NAME */
+.hero-left h1 span,
+.hero-left h1 {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.hero-left h1:hover {
+  color: red;
+  text-shadow: 
+    0 0 5px #ff0000,
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 40px #ff0000;
+}
+
+
+    /* CONTACT */
+    .contact .card-custom { border: 2px solid red; transition: transform 0.3s, box-shadow 0.3s; }
+    .contact .card-custom:hover { transform: translateY(-5px); box-shadow: 0 10px 20px red; }
+    .contact .form-control { background: #1a1a1a; border: 2px solid red; color: #fff; border-radius: 10px; padding: 12px; }
+    .contact .form-control:focus { border-color: red; box-shadow: 0 0 10px rgba(155,93,229,0.5); outline: none; }
+
+    /* Timeline style for Experience & Education */
+    .timeline { position: relative; margin: 2rem 0; padding-left: 2rem; border-left: 4px solid red; }
+    .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2rem; transition: transform 0.3s, box-shadow 0.3s; }
+    .timeline-item:hover { transform: translateY(-5px); box-shadow: 0 6px 20px red; }
+    .timeline-item::before { content: ''; position: absolute; left: -14px; top: 5px; width: 12px; height: 12px; background: #9b5de5; border-radius: 50%; border: 2px solid #fff; }
+    .timeline-item h5 { color: red; font-weight: 700; margin-bottom: 5px; }
+    .timeline-item p { color: #e0e0e0; }
+
+    @media (max-width: 767px) { .row > .col-md-6 { margin-bottom: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark px-5 fade-up">
+    <a class="navbar-brand" href="#">Cod<span>er</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero container fade-up">
+    <div class="row align-items-center">
+      <div class="col-md-6 hero-left">
+        <span class="badge bg-purple text-white mb-3">Hello, I am</span>
+        <h1>Mehboob UR <span>Rehman</span></h1>
+        <h3>Aspiring Professional Coder & IT Student</h3>
+        <p>I am doing a Bachelor in Information Technology and I love coding. I aspire to become a professional coder in the future.</p>
+        <a href="#" class="btn btn-custom me-2">Hire Me!</a>
+        <a href="#projects" class="btn btn-outline-light">My Work</a>
+      </div>
+      <div class="col-md-6 hero-right text-center">
+        <img src="pics/Pofile.png" alt="Mehboob UR Rehman" class="slide-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about" class="about py-5 fade-up">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="text-center mb-5">I am Mehboob UR Rehman, a passionate IT student and aspiring professional coder. I enjoy creating websites and web applications using modern technologies.</p>
+
+      <!-- Skills Cards -->
+       <div class="skills-horizontal fade-up">
+  <div class="skill-item">
+    <i class="fab fa-html5 skill-icon"></i>
+    <h6>HTML5</h6>
+  </div>
+  <div class="skill-item">
+    <i class="fab fa-css3-alt skill-icon"></i>
+    <h6>CSS3</h6>
+  </div>
+  <div class="skill-item">
+    <i class="fab fa-js-square skill-icon"></i>
+    <h6>JavaScript</h6>
+  </div>
+  <div class="skill-item">
+    <i class="fab fa-bootstrap skill-icon"></i>
+    <h6>Bootstrap</h6>
+  </div>
+  <div class="skill-item">
+    <i class="fab fa-php skill-icon"></i>
+    <h6>PHP</h6>
+  </div>
+  <div class="skill-item">
+    <i class="fab fa-git-alt skill-icon"></i>
+    <h6>Git</h6>
+  </div>
+  <div class="skill-item">
+    <i class="fab fa-github skill-icon"></i>
+    <h6>GitHub</h6>
+  </div>
+</div>
+
+      
+
+      <!-- Skills Performance Bars -->
+      <div class="performance mb-5">
+        <h3 class="text-purple fw-bold mb-4 text-center">My Skills Performance</h3>
+        <div class="mb-4 fade-up"><p>HTML <span class="float-end">90%</span></p><div class="progress"><div class="progress-bar" data-width="90%"></div></div></div>
+        <div class="mb-4 fade-up"><p>CSS <span class="float-end">85%</span></p><div class="progress"><div class="progress-bar" data-width="85%"></div></div></div>
+        <div class="mb-4 fade-up"><p>JavaScript <span class="float-end">75%</span></p><div class="progress"><div class="progress-bar" data-width="75%"></div></div></div>
+        <div class="mb-4 fade-up"><p>Bootstrap <span class="float-end">80%</span></p><div class="progress"><div class="progress-bar" data-width="80%"></div></div></div>
+        <div class="mb-4 fade-up"><p>PHP <span class="float-end">80%</span></p><div class="progress"><div class="progress-bar" data-width="80%"></div></div></div>
+      </div>
+
+      <!-- Timeline: Experience & Education -->
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="text-purple fw-bold mb-4">Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item"><h5>Web Developer Intern <span class="badge bg-primary">Frontend</span> <span class="badge bg-success">Internship</span></h5>
+              <p class="text-muted">ABC Company | Jan 2023 - Jun 2023</p>
+              <p>Worked on frontend development using HTML, CSS, JavaScript, and Bootstrap. Improved website performance and UI.</p>
+            </div>
+            <div class="timeline-item"><h5>Freelance Web Developer <span class="badge bg-warning text-dark">Freelance</span></h5>
+              <p class="text-muted">Self-employed | Jul 2023 - Present</p>
+              <p>Built multiple responsive websites for clients, focusing on modern design and UX improvements.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3 class="text-purple fw-bold mb-4">Education</h3>
+          <div class="timeline">
+            <div class="timeline-item"><h5>Bachelor of Science in Information Technology</h5>
+              <p class="text-muted">UAF | 2023 - Present</p>
+              <p>Currently pursuing BSc IT, focusing on web development, programming, and software solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects py-5 fade-up">
+  <div class="container">
+    <h2 class="section-title text-center mb-4">My Projects</h2>
+
+    <div class="row g-4">
+      <!-- Project Card -->
+      <div class="col-md-3 fade-up">
+        <div class="project-card coming-soon">
+          <img src="pics/landing.jpeg" alt="Personal Portfolio" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="col-md-3 fade-up">
+        <div class="project-card coming-soon">
+          <img src="pics/todo.jpeg" alt="Todo App" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="col-md-3 fade-up">
+        <div class="project-card coming-soon">
+          <img src="pics/landing.jpeg" alt="Landing Page" class="img-fluid">
+          <span class="badge-soon">Coming Soon</span>
+        </div>
+      </div>
+
+      <div class="col-md-3 fade-up">
+        <div class="project-card coming-soon">
+          <img src="pics/Business.jpeg" alt="Business Website" class="img-fluid">
+          <span class="badge-soon">Coming Soon</span>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- SERVICES -->
+  <section id="services" class="services py-5 fade-up bg-dark">
+    <div class="container">
+      <h2 class="section-title text-center">My Services</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-3 fade-up"><div class="service-card"><h5>Web Design</h5><p>Creating modern and responsive website designs with HTML and CSS.</p></div></div>
+        <div class="col-md-3 fade-up"><div class="service-card"><h5>Web Development</h5><p>Building interactive websites and web applications using JavaScript.</p></div></div>
+        <div class="col-md-3 fade-up"><div class="service-card"><h5>Portfolio Setup</h5><p>Helping students and professionals create stylish and functional portfolios.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact py-5 fade-up bg-dark">
+    <div class="container">
+      <h2 class="section-title text-center">Contact Me</h2>
+      <p class="text-center mb-5">Feel free to reach out to me for projects, collaborations, or just to say hi!</p>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4"><div class="card-custom text-center p-4"><i class="fas fa-envelope fa-2x text-purple mb-3"></i><h5>Email</h5><p>Mehbooburrehman2221@gmail.com</p></div></div>
+        <div class="col-md-4 mb-4"><div class="card-custom text-center p-4"><i class="fas fa-phone fa-2x text-purple mb-3"></i><h5>Phone</h5><p>0339 9111779</p></div></div>
+        <div class="col-md-4 mb-4"><div class="card-custom text-center p-4"><i class="fas fa-map-marker-alt fa-2x text-purple mb-3"></i><h5>Location</h5><p>Faisalabad, Pakistan</p></div></div>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+          <form action="php/contact.php" method="POST" class="fade-up">
+            <div class="mb-3"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
+            <div class="mb-3"><input type="email" name="email" class="form-control" placeholder="Your Email" required></div>
+            <div class="mb-3"><textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea></div>
+            <div class="text-center"><button type="submit" class="btn btn-custom">Send Message</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS Animations -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const faders = document.querySelectorAll('.fade-up');
+    const progressBars = document.querySelectorAll('.progress-bar');
+
+    const appearOptions = { threshold: 0.3 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer){
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    const skillsSection = document.querySelector('.performance');
+    const skillObserver = new IntersectionObserver(function(entries){
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          progressBars.forEach(bar => { bar.style.width = bar.getAttribute('data-width'); });
+          skillObserver.unobserve(skillsSection);
+        }
+      });
+    }, { threshold: 0.3 });
+    skillObserver.observe(skillsSection);
+  </script>
+</body>
+</html>
+
+
+
